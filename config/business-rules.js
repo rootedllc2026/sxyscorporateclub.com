@@ -34,9 +34,9 @@ module.exports = {
     ELIGIBLE_TYPES: ['Account Management', 'Strategic Programming'],
   },
 
-  // ── APPRENTICESHIP ───────────────────────────────────────────────────────
+   // ── APPRENTICESHIP ───────────────────────────────────────────────────────
   APPRENTICESHIP: {
-    REQUIRED_TIER:           'VIP',
+    ELIGIBLE_TIERS:         ['MONTHLY', 'ANNUAL'],
     MIN_CONSECUTIVE_MONTHS:  6,
     REQUIRED_STATUS:         'good_standing',
   },
