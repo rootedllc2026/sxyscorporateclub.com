@@ -1,4 +1,4 @@
-var LOVEABLE_TOKEN    = 'YOUR_AGENT_UPDATES_TOKEN_HERE';
+var LOVEABLE_TOKEN    = 'S7LUvYpHyXSG6EKZgN3xnvpvXuGkz6V2sX5xPR3v';
 var LOVEABLE_ENDPOINT = 'https://preview--hubble-blossom-connect.lovable.app/api/public/agent-updates';
 
 function sendWeeklySummary() {
