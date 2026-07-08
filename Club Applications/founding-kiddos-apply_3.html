@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  if (window.location.hash) { history.replaceState(null, null, ' '); }
+  window.addEventListener('load', function() { setTimeout(function() { window.scrollTo(0, 0); }, 50); });
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Founding Kiddos — Family Application | SXY's Corporate Kiddos</title>
+<meta name="description" content="Apply to become one of the Founding Kiddos families — 26 in Georgia, 26 in Pennsylvania. Applications close July 30, 2026.">
+<meta name="robots" content="index, follow">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root {
+  --muted:#8fa8b2;
+  --navy-deep:#051925;--navy:#0a2e40;--panel:#0c384e;--panel-2:#0e4058;
+  --gold:#d8a05c;--gold-light:#eec48a;--gold-deep:#96643a;
+  --cream:#f2efe3;--charcoal:#04141d;
+  --text-body:#e9ece8;--text-muted:#a8c6ce;--border:rgba(238,196,138,0.14);
+  --teal-accent:#5bcfdf;
+}
+body{font-family:"DM Sans",sans-serif;background:var(--navy-deep);color:var(--cream);min-height:100vh;display:flex;flex-direction:column}
+
+/* TOP BAR */
+.topbar{background:var(--charcoal);padding:13px 24px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.tb-brand{display:flex;align-items:center;gap:10px}
+.tb-logo{width:30px;height:30px;border-radius:50%;border:2px solid var(--gold);display:block;object-fit:cover;flex-shrink:0}
+.tb-name{font-family:"Syne",sans-serif;font-size:14px;font-weight:700;color:var(--cream)}
+.tb-sub{font-family:"DM Mono",monospace;font-size:9.5px;color:var(--gold-light);letter-spacing:.08em;margin-top:1px}
+.tb-link{font-size:12px;color:rgba(242,239,227,.45);text-decoration:none;display:flex;align-items:center;gap:4px;transition:color .15s}
+.tb-link:hover{color:var(--gold-light)}
+
+/* PAGE */
+.page{max-width:680px;margin:0 auto;padding:28px 18px 60px;width:100%}
+
+/* INTRO CARD */
+.vcard{background:var(--navy-deep);border-radius:16px;border:1px solid rgba(216,160,92,0.35);overflow:hidden;margin-bottom:20px;box-shadow:0 2px 24px rgba(216,160,92,.10)}
+.vcard-hero{padding:34px 26px 8px;text-align:center;background:linear-gradient(165deg,var(--navy-deep) 0%,var(--navy) 100%)}
+.hero-eyebrow{display:inline-block;background:rgba(91,207,223,0.08);border:1px solid rgba(91,207,223,0.3);border-radius:20px;padding:.32rem 1rem;font-family:"DM Mono",monospace;font-size:.66rem;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--teal-accent);margin-bottom:1rem}
+.vcard-hero h1{font-family:"Syne",sans-serif;font-size:clamp(1.7rem,5vw,2.4rem);font-weight:800;color:var(--cream);line-height:1.12;margin-bottom:.6rem}
+.vcard-hero h1 em{color:var(--gold);font-style:normal}
+.hero-sub{font-size:.92rem;color:var(--muted);line-height:1.7;max-width:500px;margin:0 auto 1.1rem}
+.deadline-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(216,160,92,0.1);border:1px solid rgba(216,160,92,0.45);border-radius:24px;padding:.45rem 1.2rem;font-size:.8rem;color:var(--gold-light);font-weight:600;letter-spacing:.03em;margin-bottom:1.4rem}
+.perks-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:.4rem}
+.perk-chip{font-size:11px;color:#c3cdc9;border:1px solid var(--border);border-radius:16px;padding:5px 12px;letter-spacing:.02em}
+.perk-chip b{color:var(--gold-light);font-weight:600}
+.vcard-head{padding:16px 20px 0;display:flex;align-items:center;gap:12px}
+.av{width:44px;height:44px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);flex-shrink:0}
+.av-fallback{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--panel),var(--panel-2));border:2px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:"Syne",sans-serif;font-size:15px;color:var(--gold-light);font-weight:700}
+.av-name{font-family:"Syne",sans-serif;font-size:15px;font-weight:700;color:var(--cream)}
+.av-role{font-size:11px;color:var(--text-muted);margin-top:1px}
+.online{display:flex;align-items:center;gap:4px;font-size:11px;color:#3b9e6e;margin-left:auto;flex-shrink:0}
+.online-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.5}}
+.vcard-body{padding:16px 20px 22px}
+.vcaption{font-size:12.5px;color:var(--text-muted);text-align:center;line-height:1.55}
+.start-btn{display:block;width:100%;padding:15px;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--charcoal);border:none;border-radius:10px;font-family:"DM Sans",sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .15s;margin-top:14px;letter-spacing:.01em}
+.start-btn:hover{opacity:0.88}
+
+/* CHAT CARD */
+.ccard{background:var(--navy-deep);border-radius:16px;border:1px solid var(--border);overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.35);display:none}
+.ccard.visible{display:block}
+.ccard-head{padding:13px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.prog-wrap{height:3px;background:var(--charcoal)}
+.prog{height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width .4s ease;width:0%}
+.msgs{padding:18px 15px;display:flex;flex-direction:column;gap:12px;min-height:200px;max-height:520px;overflow-y:auto;scroll-behavior:smooth}
+.msgs::-webkit-scrollbar{width:3px}
+.msgs::-webkit-scrollbar-thumb{background:#2a4a58;border-radius:2px}
+
+/* BUBBLES */
+.msg{display:flex;gap:8px;align-items:flex-end;animation:fadeUp .22s ease}
+.msg.u{flex-direction:row-reverse}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.msg-av{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--panel),var(--panel-2));border:1.5px solid var(--gold);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:"Syne",sans-serif;font-size:11px;color:var(--gold-light);font-weight:700}
+.msg-av-img{width:28px;height:28px;border-radius:50%;object-fit:cover;border:1.5px solid var(--gold);flex-shrink:0}
+.msg-av-u{width:28px;height:28px;border-radius:50%;background:#123244;border:1.5px solid #22485c;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:10px;color:#7d9aa6;font-weight:500}
+.bbl{max-width:78%;padding:10px 14px;border-radius:14px;font-size:14px;line-height:1.55}
+.msg:not(.u) .bbl{background:var(--panel);border:1px solid var(--border);color:var(--text-body);border-bottom-left-radius:4px}
+.msg.u .bbl{background:linear-gradient(135deg,var(--gold-deep),var(--gold));color:#fff;border-bottom-right-radius:4px}
+
+/* TYPING */
+.typing{display:flex;align-items:center;gap:4px;padding:10px 14px;background:var(--panel);border:1px solid var(--border);border-radius:14px;border-bottom-left-radius:4px;width:fit-content}
+.typing span{width:6px;height:6px;border-radius:50%;background:#5b7a88;animation:blink 1.2s ease-in-out infinite}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px);background:var(--gold-light)}}
+
+/* INPUT AREA */
+#ia{padding:0 0 4px}
+.inp{width:100%;padding:12px 14px;background:#0a2634;border:1.5px solid rgba(216,160,92,0.28);border-radius:9px;font-family:"DM Sans",sans-serif;font-size:14px;color:var(--cream);outline:none;transition:border-color .15s;margin-bottom:8px}
+.inp:focus{border-color:var(--gold)}
+.inp::placeholder{color:#4e6b78}
+textarea.inp{resize:vertical;min-height:80px}
+.opts{padding:8px 15px 14px;display:flex;flex-wrap:wrap;gap:8px}
+.opt{padding:9px 14px;border-radius:20px;border:1.5px solid rgba(216,160,92,0.35);background:transparent;color:var(--gold-light);font-family:"DM Sans",sans-serif;font-size:13.5px;cursor:pointer;transition:all .15s;text-align:left}
+.opt:hover{background:rgba(216,160,92,0.1);border-color:var(--gold)}
+.opt.teal{border-color:rgba(91,207,223,0.4);color:var(--teal-accent)}
+.opt.teal:hover{background:rgba(91,207,223,0.08);border-color:var(--teal-accent)}
+.opt.sel{background:rgba(216,160,92,0.18);border-color:var(--gold);color:var(--cream)}
+.send-btn{width:calc(100% - 30px);margin:0 15px 15px;padding:12px;background:linear-gradient(135deg,var(--gold-deep),var(--gold));color:#fff;border:none;border-radius:9px;font-family:"DM Sans",sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:opacity .15s}
+.send-btn:hover{opacity:0.88}
+.disc{padding:10px 15px 14px;font-size:11px;color:#3d5a68;text-align:center}
+
+/* KIDDO BADGE */
+.kiddo-badge{margin:4px 15px 0;font-family:"DM Mono",monospace;font-size:10.5px;letter-spacing:.12em;color:var(--gold);text-transform:uppercase}
+
+/* ACKNOWLEDGMENT CARD */
+.ack-card{margin:8px 15px 12px;background:var(--navy);border:1px solid rgba(216,160,92,0.35);border-radius:12px;padding:16px 18px}
+.ack-card h4{font-family:"Syne",sans-serif;font-size:14px;font-weight:700;color:var(--gold-light);margin-bottom:10px}
+.ack-card ul{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:4px}
+.ack-card li{font-size:12.5px;color:#cfd8d4;line-height:1.6;display:flex;gap:8px;align-items:flex-start}
+.ack-card li::before{content:'✦';color:var(--gold);flex-shrink:0;font-size:11px;margin-top:2px}
+.ack-toggle{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);cursor:pointer}
+.ack-toggle input{margin-top:3px;accent-color:var(--gold)}
+.ack-toggle span{font-size:12.5px;color:#9fb6bd;line-height:1.5}
+
+/* SUMMARY */
+.summ{padding:16px 15px;background:var(--navy);border-top:1px solid var(--border)}
+.summ-title{font-family:"Syne",sans-serif;font-size:15px;font-weight:700;color:var(--cream);margin-bottom:14px;line-height:1.4}
+.summ-sec{font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase;padding:12px 0 4px}
+.summ-row{display:flex;justify-content:space-between;align-items:flex-start;padding:7px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:13px;gap:12px}
+.summ-row:last-of-type{border-bottom:none}
+.sl{color:#5f7d8a;flex-shrink:0;min-width:120px}
+.sv{color:#e4e9e4;text-align:right;word-break:break-word}
+.summ-btns{display:flex;gap:10px;margin-top:16px}
+.summ-btn{flex:1;padding:11px;border-radius:9px;border:1.5px solid var(--border);background:transparent;font-family:"DM Sans",sans-serif;font-size:13.5px;color:#7d97a1;cursor:pointer}
+.summ-btn.confirm{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--charcoal);border:none;font-weight:700}
+
+/* SUCCESS */
+.success{padding:2.5rem 1.5rem;text-align:center}
+.success-icon{width:52px;height:52px;border-radius:50%;background:rgba(74,222,128,0.12);border:2px solid #4ade80;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem}
+.success-icon svg{width:22px;height:22px}
+.success-h{font-family:"Syne",sans-serif;font-weight:700;font-size:1.3rem;color:var(--cream);margin-bottom:0.5rem}
+.success-p{font-size:13.5px;color:#8fa8b2;line-height:1.6;max-width:400px;margin:0 auto}
+.success-note{font-family:"DM Mono",monospace;font-size:10.5px;color:#476270;margin-top:1.2rem;letter-spacing:.06em}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="tb-brand">
+    <img class="tb-logo" src="facebook_profile_picture.png" alt="SXY's Corporate Kiddos logo">
+    <div>
+      <div class="tb-name">SXY's Corporate Kiddos</div>
+      <div class="tb-sub">THE FOUNDING KIDDOS · FOUNDING FAMILY APPLICATION</div>
+    </div>
+  </div>
+  <a class="tb-link" href="index.html">← Back to Corporate Kiddos</a>
+</div>
+
+<div class="page">
+
+  <!-- INTRO CARD -->
+  <div class="vcard" id="video-card">
+    <div class="vcard-hero">
+      <div class="hero-eyebrow">Founding Family Applications Now Open</div>
+      <h1>The Founding <em>Kiddos</em></h1>
+      <p class="hero-sub">Our first class of kid CEOs — <b style="color:var(--cream)">26 families in Georgia and 26 in Pennsylvania</b> — will help shape the app where kids 8–18 learn to earn, save, spend, give, and build their first businesses. Founding Families lock their rate for one full year and vote on member programming and perks.</p>
+      <div class="deadline-pill">⏳ Applications close July 30, 2026 — launching August 2026</div>
+      <div class="perks-row">
+        <span class="perk-chip"><b>✓</b> Founding Rate locked 12 months</span>
+        <span class="perk-chip"><b>✓</b> Votes on perks &amp; programming</span>
+        <span class="perk-chip"><b>✓</b> Founding Kiddo badge &amp; title</span>
+      </div>
+    </div>
+    <div class="vcard-head">
+      <img class="av" src="penny-avatar.png" alt="Penny" onerror="this.outerHTML='<div class=&quot;av-fallback&quot;>P</div>'">
+      <div>
+        <div class="av-name">Penny</div>
+        <div class="av-role">Founding Family Concierge</div>
+      </div>
+      <div class="online"><div class="online-dot"></div>Online</div>
+    </div>
+    <div class="vcard-body">
+      <p class="vcaption">Hi! I'm Penny — I'll walk you through the Founding Kiddos application. It takes about 7–10 minutes. I'll ask about your family, your kiddos' interests, and the kinds of businesses they'd love to run. <b style="color:var(--gold-light)">Parents and guardians only, please!</b></p>
+      <button class="start-btn" onclick="startApp()">Begin Our Founding Family Application →</button>
+    </div>
+  </div>
+
+  <!-- CHAT CARD -->
+  <div class="ccard" id="chat-card">
+    <div class="ccard-head">
+      <img class="av" style="width:36px;height:36px" src="penny-avatar.png" alt="Penny" onerror="this.outerHTML='<div class=&quot;av-fallback&quot; style=&quot;width:36px;height:36px;font-size:14px&quot;>P</div>'">
+      <div>
+        <div class="av-name" style="font-size:14px">Penny</div>
+        <div class="av-role">Founding Family Concierge</div>
+      </div>
+      <div class="online" style="margin-left:auto"><div class="online-dot"></div>Online</div>
+    </div>
+    <div class="prog-wrap"><div class="prog" id="prog"></div></div>
+    <div class="msgs" id="msgs"></div>
+    <div id="ia"></div>
+    <div class="disc">SXY's Corporate Kiddos · Completed by a parent or legal guardian. Your information is private and secure.</div>
+  </div>
+
+</div>
+
+<script>
+// ── CONFIG ──────────────────────────────────────────────────────────────────
+// Reuses the same Apps Script endpoint; posts with &sheet=FoundingKiddos so the
+// script can route these applications to their own tab.
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxzazWlTgNPpXpwLLMSIwSoHvb0aBNakLIaN-qmpqCZJfEMQwoomxQfmr6Uptji1JdI/exec';
+const NOTIFY_EMAIL = 'admin@sxysinvestors.com';
+
+let answers = {};
+let kids = [];          // per-kiddo answers
+let kidIndex = 0;       // current kiddo in the loop
+let kidStep = 0;        // sub-step within a kiddo
+let step = 0;
+let firstName = '';
+
+// ── UTILS ───────────────────────────────────────────────────────────────────
+function setProgress(p) { document.getElementById('prog').style.width = p + '%'; }
+function scrollMsgs() { const m = document.getElementById('msgs'); setTimeout(() => { m.scrollTop = m.scrollHeight; }, 50); }
+function clearIA() { document.getElementById('ia').innerHTML = ''; }
+function pennyAv() {
+  return '<img class="msg-av-img" src="penny-avatar.png" alt="Penny" onerror="this.outerHTML=&quot;<div class=\'msg-av\'>P</div>&quot;">';
+}
+
+function agentMsg(html) {
+  return new Promise(resolve => {
+    const msgs = document.getElementById('msgs');
+    const typing = document.createElement('div');
+    typing.className = 'msg';
+    typing.innerHTML = pennyAv() + `<div class="typing"><span></span><span></span><span></span></div>`;
+    msgs.appendChild(typing);
+    scrollMsgs();
+    setTimeout(() => {
+      typing.remove();
+      const d = document.createElement('div');
+      d.className = 'msg';
+      d.innerHTML = pennyAv() + `<div class="bbl">${html}</div>`;
+      msgs.appendChild(d);
+      scrollMsgs();
+      resolve();
+    }, 900 + Math.random() * 400);
+  });
+}
+
+function userMsg(text) {
+  const msgs = document.getElementById('msgs');
+  const d = document.createElement('div');
+  d.className = 'msg u';
+  d.innerHTML = `<div class="msg-av-u">Me</div><div class="bbl">${text}</div>`;
+  msgs.appendChild(d);
+  scrollMsgs();
+}
+
+function showOptions(opts, onSelect) {
+  const ia = document.getElementById('ia');
+  clearIA();
+  const wrap = document.createElement('div');
+  wrap.className = 'opts';
+  opts.forEach(o => {
+    const btn = document.createElement('button');
+    btn.className = 'opt' + (o.teal ? ' teal' : '');
+    btn.textContent = o.label;
+    btn.onclick = () => {
+      clearIA();
+      userMsg(o.label);
+      onSelect(o.value !== undefined ? o.value : o.label, o.label);
+    };
+    wrap.appendChild(btn);
+  });
+  ia.appendChild(wrap);
+  scrollMsgs();
+}
+
+// Multi-select chips + Continue (with optional max)
+function showMultiSelect(opts, onDone, maxPick) {
+  const ia = document.getElementById('ia');
+  clearIA();
+  const picked = new Set();
+  const wrap = document.createElement('div');
+  wrap.className = 'opts';
+  opts.forEach(o => {
+    const btn = document.createElement('button');
+    btn.className = 'opt';
+    btn.textContent = o;
+    btn.onclick = () => {
+      if (picked.has(o)) { picked.delete(o); btn.classList.remove('sel'); }
+      else {
+        if (maxPick && picked.size >= maxPick) return;
+        picked.add(o); btn.classList.add('sel');
+      }
+    };
+    wrap.appendChild(btn);
+  });
+  const cont = document.createElement('button');
+  cont.className = 'send-btn';
+  cont.textContent = 'Continue →';
+  cont.onclick = () => {
+    if (picked.size === 0) { cont.textContent = 'Pick at least one to continue →'; setTimeout(()=>cont.textContent='Continue →', 1200); return; }
+    const vals = Array.from(picked);
+    clearIA();
+    userMsg(vals.join(' · '));
+    onDone(vals);
+  };
+  ia.appendChild(wrap);
+  ia.appendChild(cont);
+  scrollMsgs();
+}
+
+function showTextInput(placeholder, onSubmit, multiline) {
+  const ia = document.getElementById('ia');
+  clearIA();
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'padding:8px 15px 14px';
+  const el = document.createElement(multiline ? 'textarea' : 'input');
+  el.className = 'inp';
+  el.placeholder = placeholder;
+  if (multiline) el.rows = 3;
+  const btn = document.createElement('button');
+  btn.className = 'send-btn';
+  btn.style.margin = '0';
+  btn.style.width = '100%';
+  btn.textContent = 'Continue →';
+  const submit = () => {
+    const v = el.value.trim();
+    if (!v) { el.style.borderColor = '#d85a30'; setTimeout(() => el.style.borderColor = '', 800); return; }
+    clearIA();
+    userMsg(v.length > 120 ? v.slice(0, 120) + '…' : v);
+    onSubmit(v);
+  };
+  btn.onclick = submit;
+  el.addEventListener('keydown', e => { if (!multiline && e.key === 'Enter') submit(); });
+  wrap.appendChild(el); wrap.appendChild(btn);
+  ia.appendChild(wrap);
+  setTimeout(() => el.focus(), 100);
+  scrollMsgs();
+}
+
+// ── START ────────────────────────────────────────────────────────────────────
+function startApp() {
+  document.getElementById('video-card').style.display = 'none';
+  const cc = document.getElementById('chat-card');
+  cc.style.display = 'block';
+  setTimeout(() => cc.classList.add('visible'), 10);
+  step = 0;
+  nextStep();
+}
+
+// ── CONVERSATION ─────────────────────────────────────────────────────────────
+async function nextStep() {
+  step++;
+
+  if (step === 1) {
+    setProgress(3);
+    await agentMsg('Welcome! I\'m Penny 👋<br><br>You\'re applying to become a <b>Founding Family</b> of SXY\'s Corporate Kiddos — our very first class. Only <b>26 families in Georgia</b> and <b>26 in Pennsylvania</b> will be selected, and applications close <b>July 30, 2026</b>.<br><br>Ready to get started?');
+    showOptions([{label:'Yes — let\'s do this! 🐷💰'},{label:'Ready when you are', teal:true}], () => nextStep());
+
+  } else if (step === 2) {
+    setProgress(7);
+    await agentMsg('First — what\'s your full name? (Parent or legal guardian, please!)');
+    showTextInput('Your first and last name...', async (val) => {
+      answers.fname = val.split(' ')[0] || val;
+      answers.lname = val.split(' ').slice(1).join(' ') || '';
+      firstName = answers.fname;
+      await agentMsg(`Great to meet you, ${firstName}! 🤝`);
+      nextStep();
+    });
+
+  } else if (step === 3) {
+    setProgress(11);
+    await agentMsg(`${firstName}, what\'s the best phone number and email to reach you? We\'ll use these for your application decision and onboarding.`);
+    const ia = document.getElementById('ia');
+    clearIA();
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'padding:8px 15px 14px;display:flex;flex-direction:column;gap:8px';
+    const ph = document.createElement('input'); ph.className='inp'; ph.type='tel'; ph.placeholder='Phone number...';
+    const em = document.createElement('input'); em.className='inp'; em.type='email'; em.placeholder='Email address...';
+    const btn = document.createElement('button'); btn.className='send-btn'; btn.style.margin='0'; btn.style.width='100%'; btn.textContent='Continue →';
+    btn.onclick = () => {
+      if (!ph.value.trim()) { ph.style.borderColor='#d85a30'; setTimeout(()=>ph.style.borderColor='',800); return; }
+      if (!em.value.trim() || !em.value.includes('@')) { em.style.borderColor='#d85a30'; setTimeout(()=>em.style.borderColor='',800); return; }
+      clearIA();
+      userMsg(ph.value.trim() + ' · ' + em.value.trim());
+      answers.phone = ph.value.trim();
+      answers.email = em.value.trim();
+      nextStep();
+    };
+    wrap.appendChild(ph); wrap.appendChild(em); wrap.appendChild(btn);
+    ia.appendChild(wrap);
+    setTimeout(() => ph.focus(), 100);
+    scrollMsgs();
+
+  } else if (step === 4) {
+    setProgress(16);
+    await agentMsg('Which state does your family live in? Our founding class is open to <b>Georgia</b> and <b>Pennsylvania</b> families.');
+    showOptions([
+      {label:'🍑 Georgia', value:'Georgia'},
+      {label:'🔔 Pennsylvania', value:'Pennsylvania'},
+      {label:'📍 Somewhere else', value:'other'}
+    ], async (val) => {
+      if (val === 'other') {
+        answers.state = 'other';
+        await agentMsg('Which state?');
+        showTextInput('Your state...', async (v) => {
+          answers.stateOther = v;
+          await agentMsg(`Thanks for your honesty, ${firstName}! The founding class is limited to Georgia and Pennsylvania this round — but I\'ll take your full application anyway and put your family <b>first in line</b> when ${v} opens. 🗺️✨`);
+          nextStep();
+        });
+      } else {
+        answers.state = val;
+        answers.stateOther = '';
+        await agentMsg(`${val} — wonderful! Your family will be in the running for one of your state\'s 26 founding seats. 🏛️`);
+        nextStep();
+      }
+    });
+
+  } else if (step === 5) {
+    setProgress(21);
+    await agentMsg('How many children ages 8–18 live in your household?');
+    showOptions([
+      {label:'1', value:'1'},{label:'2', value:'2'},{label:'3', value:'3'},{label:'4 or more', value:'4+'}
+    ], (val) => { answers.kidsTotal = val; nextStep(); });
+
+  } else if (step === 6) {
+    setProgress(25);
+    await agentMsg('And how many of your kiddos would join the app? (Plans cover up to 9 profiles!)');
+    showOptions([
+      {label:'1', value:1},{label:'2', value:2},{label:'3', value:3},{label:'4', value:4},{label:'5 or more', value:'5+'}
+    ], async (val) => {
+      answers.kidsEnrolling = val;
+      answers.kidsDetailCount = (val === '5+') ? 4 : val;
+      kids = []; kidIndex = 0;
+      if (val === '5+') {
+        await agentMsg('A whole board room! 🏛️ I\'ll ask about four of your kiddos here — pick any four — and we\'ll cover the rest together during onboarding.');
+      }
+      nextStep();
+    });
+
+  } else if (step === 7) {
+    setProgress(29);
+    await agentMsg('Which Founding plan fits your household best? <em style="font-size:12px;color:#6f8d99">Whichever you choose is your Founding Rate, locked for 12 months.</em>');
+    showOptions([
+      {label:'🐷 Kiddo Plan — $5/month · up to 4 kiddo profiles', value:'Kiddo Plan ($5/mo · up to 4 profiles)'},
+      {label:'👨‍👩‍👧‍👦 Big Family Plan — $9/month · up to 9 kiddo profiles', value:'Big Family Plan ($9/mo · up to 9 profiles)'},
+      {label:'Not sure yet — advise me', value:'Not sure yet', teal:true}
+    ], (val) => { answers.plan = val; nextStep(); });
+
+  } else if (step === 8) {
+    setProgress(33);
+    await agentMsg('What devices would your kiddo(s) use for the app? Tap all that apply.');
+    showMultiSelect(['📱 Smartphone','📲 Tablet','💻 Computer','👨‍👩‍👧 Shared family device'], (vals) => {
+      answers.devices = vals.join(', ');
+      startKidLoop();
+    });
+  }
+}
+
+// ── PER-KIDDO LOOP ───────────────────────────────────────────────────────────
+// Base progress 36 → 78 split across kiddos
+function kidProgress() {
+  const per = 42 / answers.kidsDetailCount;
+  return Math.round(36 + per * kidIndex + (per / 5) * kidStep);
+}
+function ordinal(i) { return ['first','second','third','fourth'][i] || (i+1)+'th'; }
+
+async function startKidLoop() {
+  kidIndex = 0;
+  await agentMsg(`Now for the fun part, ${firstName} — tell me about your kiddo${answers.kidsDetailCount > 1 ? 's' : ''}! 🌟<br><em style="font-size:12px;color:#6f8d99">To protect your child\'s privacy, I\'ll only ask for a first initial — never a full name or birthdate.</em>`);
+  askKid();
+}
+
+function kidBadge() {
+  const ia = document.getElementById('ia');
+  const b = document.createElement('div');
+  b.className = 'kiddo-badge';
+  b.textContent = `Kiddo ${kidIndex + 1} of ${answers.kidsDetailCount}`;
+  ia.prepend(b);
+}
+
+async function askKid() {
+  kids[kidIndex] = kids[kidIndex] || {};
+  const k = kids[kidIndex];
+  kidStep = 0;
+
+  setProgress(kidProgress());
+  await agentMsg(answers.kidsDetailCount > 1
+    ? `Let\'s talk about your <b>${ordinal(kidIndex)} kiddo</b>. What\'s their first initial?`
+    : 'What\'s your kiddo\'s first initial?');
+  showTextInput('e.g. J', async (val) => {
+    k.initial = val.slice(0, 2).toUpperCase();
+    kidStep = 1; setProgress(kidProgress());
+    await agentMsg(`Kiddo ${k.initial} — love it! 🎉 What\'s their age bracket?`);
+    kidBadgeSafeOptions([
+      {label:'8–10', value:'8–10'},
+      {label:'11–12', value:'11–12'},
+      {label:'13–15', value:'13–15'},
+      {label:'16–18', value:'16–18'}
+    ], async (age) => {
+      k.age = age;
+      kidStep = 2; setProgress(kidProgress());
+      await agentMsg(`What are ${k.initial}\'s interests, hobbies, and after-school activities?<br><em style="font-size:12px;color:#6f8d99">e.g. art, gaming, basketball, baking, robotics club, dance…</em>`);
+      showTextInput('Interests, hobbies & activities...', async (val) => {
+        k.interests = val;
+        kidStep = 3; setProgress(kidProgress());
+        await agentMsg(`What kind of business do you think ${k.initial} might enjoy running? Tap all that fit.`);
+        showMultiSelect([
+          '🎨 Making & selling (crafts, baking, art)',
+          '🐕 Services (pet care, lawn care, tutoring)',
+          '💻 Digital & creative (content, design, games)',
+          '👟 Reselling & flipping (thrifting, collectibles)',
+          '🎉 Events & experiences (pop-ups, parties)',
+          '🤷 Not sure yet — excited to find out!'
+        ], async (vals) => {
+          k.bizTypes = vals.join('; ');
+          kidStep = 4; setProgress(kidProgress());
+          await agentMsg(`Last one for ${k.initial}: how interested are they in learning about money, saving, and business?`);
+          kidBadgeSafeOptions([
+            {label:'🔥 Super interested — asks about it already', value:'5 — Super interested'},
+            {label:'😀 Pretty interested', value:'4 — Pretty interested'},
+            {label:'🙂 Somewhat curious', value:'3 — Somewhat curious'},
+            {label:'😐 Not yet — that\'s why we\'re here!', value:'2 — Not yet (that\'s the goal)', teal:true}
+          ], async (val) => {
+            k.moneyInterest = val;
+            kidIndex++;
+            if (kidIndex < answers.kidsDetailCount) {
+              await agentMsg(`Kiddo ${k.initial} is on file! ✅ Next kiddo…`);
+              askKid();
+            } else {
+              await agentMsg(`That\'s ${answers.kidsDetailCount > 1 ? 'all your kiddos' : 'your kiddo'} on file — what a crew! 🌟 Just a few family questions left.`);
+              familyStep1();
+            }
+          });
+        });
+      });
+    });
+  });
+}
+
+function kidBadgeSafeOptions(opts, cb) { showOptions(opts, cb); kidBadge(); }
+
+// ── FAMILY QUESTIONS ─────────────────────────────────────────────────────────
+async function familyStep1() {
+  setProgress(80);
+  await agentMsg('Do you currently use an allowance or chore-payment system at home?');
+  showOptions([
+    {label:'📱 Yes — an app', value:'Yes — an app'},
+    {label:'💵 Yes — cash or manual tracking', value:'Yes — cash/manual'},
+    {label:'❌ Not yet', value:'Not yet'}
+  ], (val) => { answers.allowance = val; familyStep2(); });
+}
+
+async function familyStep2() {
+  setProgress(84);
+  await agentMsg('What do you most want your kiddo(s) to learn about money? Pick your <b>top 3</b>.');
+  showMultiSelect(
+    ['💰 Saving','📊 Budgeting','🚀 Earning & entrepreneurship','❤️ Giving & generosity','🛍️ Smart spending','📈 Investing basics'],
+    (vals) => { answers.learnGoals = vals.join(', '); familyStep3(); },
+    3
+  );
+}
+
+async function familyStep3() {
+  setProgress(88);
+  await agentMsg('Roughly how much time per week could your kiddo(s) spend in the app?');
+  showOptions([
+    {label:'Under 1 hour', value:'Under 1 hour'},
+    {label:'1–3 hours', value:'1–3 hours'},
+    {label:'3+ hours', value:'3+ hours'}
+  ], (val) => { answers.weeklyTime = val; ackStep(); });
+}
+
+// ── ACKNOWLEDGMENT ───────────────────────────────────────────────────────────
+async function ackStep() {
+  setProgress(92);
+  await agentMsg(`Almost done, ${firstName}! Please review the Founding Family terms below and confirm you understand them.`);
+  const ia = document.getElementById('ia');
+  clearIA();
+  const card = document.createElement('div');
+  card.className = 'ack-card';
+  card.innerHTML = `
+    <h4>Founding Family Terms — Summary</h4>
+    <ul>
+      <li><b>One-year rate lock.</b> Your selected membership plan and Founding Rate are locked for twelve (12) months from your membership start date.</li>
+      <li><b>Voting input.</b> Founding Families vote on designated member programming and perk decisions — on both the parent and kiddo side. Votes are advisory: they guide decisions, and final implementation remains with SXY's Corporate Kiddos as described in the Founding Family Terms. Voting confers no ownership or equity.</li>
+      <li><b>Feedback partnership.</b> Founding Families agree to two short in-app surveys per month and one 20-minute feedback call per quarter during the founding year.</li>
+      <li><b>Parental consent (COPPA).</b> If selected, you will complete a verifiable parental consent process before any child under 13 uses the app.</li>
+      <li><b>Selection.</b> Applying does not guarantee selection. Up to 26 families per state will be selected. No payment is due unless you are selected and accept your seat.</li>
+    </ul>
+    <label class="ack-toggle"><input type="checkbox" id="testi-ok"><span><b>Optional:</b> You may use my first name and my kiddo's first initial in testimonials and marketing.</span></label>`;
+  const btn = document.createElement('button');
+  btn.className = 'send-btn';
+  btn.textContent = 'I understand & agree ✓';
+  btn.onclick = () => {
+    answers.testimonialOk = document.getElementById('testi-ok').checked ? 'Yes' : 'No';
+    clearIA();
+    userMsg('I understand & agree ✓');
+    answers.ack = 'Agreed to Founding Family terms summary';
+    whyStep();
+  };
+  ia.appendChild(card);
+  ia.appendChild(btn);
+  scrollMsgs();
+}
+
+async function whyStep() {
+  setProgress(95);
+  await agentMsg(`Last question, ${firstName} — and my favorite: in a sentence or two, <b>why do you want your kiddo(s) to be Founding Kiddos?</b> 💛`);
+  showTextInput('Tell us why...', async (val) => {
+    answers.why = val;
+    await agentMsg('Beautiful. Let me pull together your family\'s summary. 📋');
+    showSummary();
+  }, true);
+}
+
+// ── SUMMARY ──────────────────────────────────────────────────────────────────
+function showSummary() {
+  setProgress(97);
+  clearIA();
+  const ia = document.getElementById('ia');
+  const state = answers.state === 'other' ? `${answers.stateOther} (waitlist)` : answers.state;
+
+  let kidRows = '';
+  kids.forEach((k, i) => {
+    kidRows += `<div class="summ-sec">Kiddo ${i+1} — "${k.initial}"</div>` +
+      `<div class="summ-row"><span class="sl">Age bracket</span><span class="sv">${k.age}</span></div>` +
+      `<div class="summ-row"><span class="sl">Interests</span><span class="sv">${k.interests.slice(0,70)}${k.interests.length>70?'…':''}</span></div>` +
+      `<div class="summ-row"><span class="sl">Business fit</span><span class="sv">${k.bizTypes.slice(0,70)}${k.bizTypes.length>70?'…':''}</span></div>` +
+      `<div class="summ-row"><span class="sl">Money interest</span><span class="sv">${k.moneyInterest}</span></div>`;
+  });
+
+  const wrap = document.createElement('div');
+  wrap.className = 'summ';
+  wrap.innerHTML = `<div class="summ-title">Here\'s your Founding Family application, ${firstName} — does everything look right?</div>` +
+    `<div class="summ-sec">Family</div>` +
+    `<div class="summ-row"><span class="sl">Parent/Guardian</span><span class="sv">${answers.fname} ${answers.lname}</span></div>` +
+    `<div class="summ-row"><span class="sl">Phone</span><span class="sv">${answers.phone}</span></div>` +
+    `<div class="summ-row"><span class="sl">Email</span><span class="sv">${answers.email}</span></div>` +
+    `<div class="summ-row"><span class="sl">State</span><span class="sv">${state}</span></div>` +
+    `<div class="summ-row"><span class="sl">Kids 8–18 at home</span><span class="sv">${answers.kidsTotal}</span></div>` +
+    `<div class="summ-row"><span class="sl">Kiddos enrolling</span><span class="sv">${answers.kidsEnrolling}</span></div>` +
+    `<div class="summ-row"><span class="sl">Plan (locked 12 mo)</span><span class="sv">${answers.plan}</span></div>` +
+    `<div class="summ-row"><span class="sl">Devices</span><span class="sv">${answers.devices}</span></div>` +
+    kidRows +
+    `<div class="summ-sec">Family Goals</div>` +
+    `<div class="summ-row"><span class="sl">Allowance today</span><span class="sv">${answers.allowance}</span></div>` +
+    `<div class="summ-row"><span class="sl">Top money goals</span><span class="sv">${answers.learnGoals}</span></div>` +
+    `<div class="summ-row"><span class="sl">Weekly app time</span><span class="sv">${answers.weeklyTime}</span></div>` +
+    `<div class="summ-row"><span class="sl">Founding terms</span><span class="sv">✓ Acknowledged</span></div>` +
+    `<div class="summ-row"><span class="sl">Testimonial OK</span><span class="sv">${answers.testimonialOk}</span></div>` +
+    `<div class="summ-btns">
+      <button class="summ-btn" onclick="goBack()">Fix something</button>
+      <button class="summ-btn confirm" onclick="submitApp()">Submit our application ✓</button>
+    </div>`;
+  ia.appendChild(wrap);
+  scrollMsgs();
+}
+
+function goBack() {
+  clearIA();
+  step = 1;
+  kids = []; kidIndex = 0;
+  agentMsg(`No problem, ${firstName}! Let\'s go back to the top. What\'s your full name?`).then(() => { step = 2; nextStep(); });
+}
+
+// ── SUBMIT ────────────────────────────────────────────────────────────────────
+async function submitApp() {
+  clearIA();
+  userMsg('Submit our application ✓');
+  setProgress(100);
+  await agentMsg(`Your family\'s application is in, ${firstName}! 🎉<br><br>We review Founding Kiddos applications on a rolling basis, and each state\'s 26 Founding Families will be notified by <b>early August 2026</b> — keep an eye on your phone and email.<br><br>Thank you for raising a future CEO with us. 💛`);
+
+  const state = answers.state === 'other' ? answers.stateOther : answers.state;
+  const kidSummary = kids.map((k, i) =>
+    `Kiddo ${i+1} [${k.initial}] | Age: ${k.age} | Interests: ${k.interests} | Business fit: ${k.bizTypes} | Money interest: ${k.moneyInterest}`
+  ).join('\n');
+
+  const payload = {
+    type: 'Founding Kiddos Family Application',
+    fname: answers.fname || '',
+    lname: answers.lname || '',
+    phone: answers.phone || '',
+    email: answers.email || '',
+    state: state || '',
+    stateStatus: answers.state === 'other' ? 'out_of_state_waitlist' : 'eligible',
+    kidsTotal: answers.kidsTotal || '',
+    kidsEnrolling: answers.kidsEnrolling || '',
+    plan: answers.plan || '',
+    devices: answers.devices || '',
+    kiddos: kidSummary,
+    allowanceToday: answers.allowance || '',
+    learningGoals: answers.learnGoals || '',
+    weeklyTime: answers.weeklyTime || '',
+    foundingTermsAck: answers.ack || '',
+    testimonialOk: answers.testimonialOk || 'No',
+    whyFounding: answers.why || '',
+    submittedAt: new Date().toLocaleString(),
+    addedBy: 'Penny (Founding Kiddos Application)',
+    status: 'pending_review'
+  };
+
+  // Google Sheet submission (routes to its own tab via sheet=FoundingKiddos)
+  const cbName = 'cb_' + Date.now();
+  window[cbName] = function() { delete window[cbName]; };
+  const params = Object.keys(payload).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(payload[k])).join('&');
+  const script = document.createElement('script');
+  script.src = SHEET_URL + '?' + params + '&callback=' + cbName + '&sheet=FoundingKiddos';
+  document.head.appendChild(script);
+  setTimeout(() => { if (script.parentNode) script.parentNode.removeChild(script); }, 10000);
+
+  // Notify via API
+  try {
+    await fetch('https://www.sxyscorporateclub.com/api/public/intake', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        full_name: `${answers.fname} ${answers.lname}`,
+        email: answers.email || '',
+        phone: answers.phone || '',
+        business_name: 'Founding Kiddos Family',
+        service_interest: 'The Founding Kiddos — Founding Family Application',
+        message: `FOUNDING KIDDOS FAMILY APPLICATION\n\nState: ${state}${answers.state === 'other' ? ' (OUT OF STATE — WAITLIST)' : ''}\n\nKids 8–18 at home: ${answers.kidsTotal}\nKiddos enrolling: ${answers.kidsEnrolling}\nPlan: ${answers.plan}\nDevices: ${answers.devices}\n\n${kidSummary}\n\nAllowance today: ${answers.allowance}\nTop money goals: ${answers.learnGoals}\nWeekly app time: ${answers.weeklyTime}\nTestimonial OK: ${answers.testimonialOk}\n\nWhy Founding: ${answers.why}`,
+        preferred_contact: 'Email',
+        source: 'founding-kiddos-apply',
+        notify_emails: [NOTIFY_EMAIL]
+      })
+    });
+  } catch(e) { console.warn('API error:', e); }
+
+  setTimeout(() => {
+    document.getElementById('ia').innerHTML = `
+      <div class="success">
+        <div class="success-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="success-h">Application Received, ${firstName}!</div>
+        <div class="success-p">Your Founding Family application is under review. Each state\'s 26 Founding Families will be notified by early August 2026. Watch your phone and email!</div>
+        <div class="success-note">SXY\'S CORPORATE KIDDOS · THE FOUNDING KIDDOS · GA & PA</div>
+      </div>`;
+    scrollMsgs();
+  }, 1500);
+}
+</script>
+</body>
+</html>
